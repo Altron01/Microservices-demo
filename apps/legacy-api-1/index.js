@@ -16,5 +16,10 @@ var consumer = new Consumer(
 consumer.on('error', function (err) { console.log(err) })
 consumer.on('offserOutRange', function (err) {console.log(err)})
 consumer.on('message', function (message) {
-  postUser(JSON.parse(message.value));
+  var res = JSON.parse(message.value)
+  var data = {
+    UserID: res.UserID,
+    desc: res.desc
+  }
+  postUser(data);
 });
