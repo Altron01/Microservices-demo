@@ -15,11 +15,12 @@ app.post('/postUser', (req, res) => {
     axios.post(sessionAPI + '/sessionExists', {
         session: body.session
     }).then(r => {
-      if(r.status == 200) {
-        return axios.post(depoAPI + '/', {
-          userData: body.userData
-        })
-      }else res.send({ status: 500, msg: "WHY" })
+      console.log(r)
+      return axios.post(depoAPI + '/', {
+        userData: body.userData
+      })
+    }).catch(err => {
+        res.send({ status: 500, msg: err })
     })
   })
 
