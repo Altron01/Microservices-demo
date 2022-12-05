@@ -28,7 +28,7 @@ producer.on('error', function (err) {
 app.post('/', (req, res) => {
     var body = req.body
 
-    var d = JSON.stringify(body.userData)
+    var d = JSON.stringify(body)
 
     km = new KeyedMessage('key', 'message'),
         payloads = [

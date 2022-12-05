@@ -29,6 +29,7 @@ app.post('/sessionExists', (req, res) => {
     if(body.session){
         client.get(body.session)
         .then(r => {
+            console.log(r);
             if (r) res.send({ status: 200, msg: true })
             else {
                 client.set(body.session, JSON.stringify("X"))
