@@ -1,7 +1,7 @@
 var kafka = require('kafka-node');
 const postUser = require('./interfaces/db_interface').postUser;
 var Consumer = kafka.Consumer;
-const client = new kafka.KafkaClient({kafkaHost: '172.16.0.204:9092'});
+const client = new kafka.KafkaClient({kafkaHost: process.env.KAFKA_HOST});
 var consumer = new Consumer(
     client,
     [

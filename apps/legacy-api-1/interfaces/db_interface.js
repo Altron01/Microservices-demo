@@ -7,13 +7,13 @@ var connection = mysql.createConnection({
 });
 
 connection.connect();
-
+/*
 createUser = 'CREATE TABLE users(UserID int PRIMARY KEY,desc varchar(50));';
 connection.query('DROP TABLE IF EXISTS users;', function (error, results, fields) {
   if (error) throw error;
   console.log('TABLA CREADA');
 });
-
+*/
 function postUser(user) {
     return new Promise((resolve, reject) => {
         connection.query('INSERT INTO users SET ?', user, function (error, results, fields) {

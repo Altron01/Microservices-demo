@@ -2,7 +2,6 @@ const express = require('express')
 var cors = require('cors')
 const axios = require('axios')
 const bodyParser = require('body-parser');
-var db_interface = require('./interfaces/db_interface')
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
