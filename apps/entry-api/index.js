@@ -17,10 +17,13 @@ app.post('/postUser', (req, res) => {
     }).then(r => {
       console.log(r)
       return axios.post(depoAPI + '/', {
-        userData: body.userData
+        userID: body.userID,
+        desc: body.desc
       })
+    }).then(r2 => {
+      res.send({ status: 200, msg: "Success" })
     }).catch(err => {
-        res.send({ status: 500, msg: err })
+      res.send({ status: 500, msg: err })
     })
   })
 
