@@ -1,3 +1,7 @@
 variable "rds_password" {
-  default = "MySQL@8_0"
+  default = "Altron194"
+}
+
+variable "dcs_password" {
+  default = "Altron194"
 }

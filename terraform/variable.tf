@@ -1,5 +1,9 @@
+variable "demo_name" {
+    default = "demo"
+}
+
 variable "vpc_name" {
-  default = "vpc-demo"
+  default = "demo"
 }
 
 variable "vpc_cidr" {
@@ -7,15 +11,15 @@ variable "vpc_cidr" {
 }
 
 variable "subnet_name" {
-  default = "subent-demo"
+  default = "subnet-demo"
 }
 
 variable "subnet_cidr" {
-  default = "172.16.10.0/24"
+  default = "172.16.0.0/24"
 }
 
 variable "subnet_gateway" {
-  default = "172.16.10.1"
+  default = "172.16.0.1"
 }
 
 variable "primary_dns" {

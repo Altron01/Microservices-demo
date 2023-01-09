@@ -2,9 +2,9 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/huaweicloud/huaweicloud" {
-  version     = "1.43.0"
-  constraints = ">= 1.20.0"
+  version = "1.43.0"
   hashes = [
+    "h1:z4j711GLsSD5mliGJMDho/PrBlH2ISkU7PAX+FrlRcI=",
     "h1:zSAftiMoRplFrnVXfKyrDQQI/P6SFOqj2UJzDUssA08=",
     "zh:05a0989fa39cbabe700097e3ce1dc32a106b05b4cb238038d9d4c1f2deed8a9a",
     "zh:1b1474e0d4fe308ff88f0e1ec4546fce713aad10c636a763e135d46bf5b4b2e7",
