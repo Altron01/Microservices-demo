@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('') {
+    stage('error') {
       steps {
         sh '''cd ./Microservices-demo/apps/entry-api
 npm install'''
