@@ -40,8 +40,7 @@ jobs:
         env:
           FRONTAPI_IMAGE: ${{ needs.setup.outputs.repo }}/demo/frontapi:${{ needs.setup.outputs.version }}-${{ github.run_id }}
         with:
-          context: apps/front-api/
-          file: Dockerfile
+          context: ./apps/front-api/
           tags: ${{ env.FRONTAPI_IMAGE }}
           push: true
           cache: true
@@ -67,8 +66,7 @@ jobs:
         env:
           BACKAPI_IMAGE: ${{ needs.setup.outputs.repo }}/demo/backapi:${{ needs.setup.outputs.version }}-${{ github.run_id }}
         with:
-          context: apps/back-api/
-          file: Dockerfile
+          context: ./apps/back-api/
           tags: ${{ env.BACKAPI_IMAGE }}
           push: true
           cache: true
