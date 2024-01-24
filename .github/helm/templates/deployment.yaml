@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.frontapi.name }}-deploy
+  labels:
+    app: {{ .Values.frontapi.name }}
+spec:
+  replicas: {{ .Values.frontapi.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.frontapi.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.frontapi.name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets.name }}
+      containers:
+        - name: "{{ .Values.frontapi.name }}"
+          image: "{{ .Values.frontapi.image.repository }}:{{ default (include "demo.defaultTag" .) .Values.global.image.tag }}"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: {{ .Values.frontapi.resources.request.cpu }}
+              memory: {{ .Values.frontapi.resources.request.memory }}
+          ports:
+            - containerPort: {{ .Values.frontapi.container.port }}
+          env:
+          {{- with .Values.frontapi.env }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- with .Values.frontapi.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.backapi.name }}-deploy
+  labels:
+    app: {{ .Values.backapi.name }}
+spec:
+  replicas: {{ .Values.backapi.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.backapi.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.backapi.name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets.name }}
+      containers:
+        - name: "{{ .Values.backapi.name }}"
+          image: "{{ .Values.backapi.image.repository }}:{{ default (include "demo.defaultTag" .) .Values.global.image.tag }}"
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: {{ .Values.backapi.resources.request.cpu }}
+              memory: {{ .Values.backapi.resources.request.memory }}
+          ports:
+            - containerPort: {{ .Values.backapi.container.port }}
+          env:
+          {{- with .Values.backapi.env }}
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          {{- with .Values.backapi.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 10 }}
+          {{- end }}
+          

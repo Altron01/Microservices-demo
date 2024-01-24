@@ -1,0 +1,39 @@
+global:
+  image:
+    tag: "0.1.0"
+
+frontapi:
+  name: "frontapi"
+  replicaCount: 2
+  container:
+    port: 8000
+  resources:
+    request:
+      cpu: 100m
+      memory: 100Mi
+  image:
+    repository: harbor.ops.altronstudio.com/latest/frontapi
+
+backapi:
+  name: "backapi"
+  replicaCount: 2
+  container:
+    port: 8000
+  resources:
+    request:
+      cpu: 100m
+      memory: 100Mi
+  image:
+    repository: harbor.ops.altronstudio.com/latest/backapi
+
+imagePullSecrets:
+  name: harbor-registry
+
+autoscaling:
+  horizontal:
+    enabled: true
+    maxReplicas: 3
+    minReplicas: 1
+    averageRelativeCPU: 85
+    averageRelativeMemory: 85
+

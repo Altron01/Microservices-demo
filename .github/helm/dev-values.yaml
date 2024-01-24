@@ -1,0 +1,18 @@
+frontapi:
+  env:
+    - name: APP_PORT
+      value: "8000"
+    - name: BACK_URL
+      value: "backapi.app.altronstudio.com"
+  domain:
+    host: frontapi.app.altronstudio.com
+
+backapi:
+  env:
+    - name: APP_PORT
+      value: "8000"
+  domain:
+    host: backapi.app.altronstudio.com
+
+publish: false
+sslSecret: app-altronstudio-com-wildcard-cert-tls

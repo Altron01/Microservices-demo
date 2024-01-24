@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.frontapi.name }}-svc
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: {{ .Values.frontapi.container.port }}
+      port: {{ .Values.frontapi.container.port }}
+  selector:
+      name: {{ .Values.frontapi.name }}-deploy
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.backapi.name }}-svc
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: {{ .Values.backapi.container.port }}
+      port: {{ .Values.backapi.container.port }}
+  selector:
+      name: {{ .Values.backapi.name }}-deploy

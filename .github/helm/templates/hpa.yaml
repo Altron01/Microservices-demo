@@ -1,0 +1,54 @@
+{{- if .Values.autoscaling.horizontal.enabled -}}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.frontapi.name }}-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.frontapi.name }}-deploy
+  minReplicas: {{ .Values.autoscaling.horizontal.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.horizontal.maxReplicas }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.autoscaling.horizontal.averageRelativeCPU }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.autoscaling.horizontal.averageRelativeMemory }}
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.backapi.name }}-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.backapi.name }}-deploy
+  minReplicas: {{ .Values.autoscaling.horizontal.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.horizontal.maxReplicas }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.autoscaling.horizontal.averageRelativeCPU }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.autoscaling.horizontal.averageRelativeMemory }}
+
+{{- end -}}
