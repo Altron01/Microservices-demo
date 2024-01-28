@@ -33,8 +33,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: https://harbor.hwcops.altronstudio.com
-          username: ${{ secrets.HARBOR_REGISTRY_USER }}
-          password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+          username: ${{ secrets.DOCKER_REGISTRY_USER }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
       - name: Build & Push
         uses: int128/kaniko-action@v1
         env:
@@ -59,8 +59,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: https://harbor.hwcops.altronstudio.com
-          username: ${{ secrets.HARBOR_REGISTRY_USER }}
-          password: ${{ secrets.HARBOR_REGISTRY_PASSWORD }}
+          username: ${{ secrets.HELM_REGISTRY_USER }}
+          password: ${{ secrets.HELM_REGISTRY_PASSWORD }}
       - name: Build & Push
         uses: int128/kaniko-action@v1
         env:
@@ -86,7 +86,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Login to Helm
-        run: echo ${{ secrets.HARBOR_REGISTRY_PASSWORD }} | helm registry login harbor.hwcops.altronstudio.com -u ${{ secrets.HARBOR_REGISTRY_USER }} --password-stdin
+        run: echo ${{ secrets.HELM_REGISTRY_PASSWORD }} | helm registry login harbor.hwcops.altronstudio.com -u ${{ secrets.HELM_REGISTRY_USER }} --password-stdin
       - name: Helm Package
         env:
           VERSION: ${{ needs.setup.outputs.version }}-${{ github.run_id }}
