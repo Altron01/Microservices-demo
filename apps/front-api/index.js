@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
       data: {
         msg: "Done"
       }
-    }).then(res => {
-      res.status(200).send({ msg: res.body })
+    }).then(r => {
+      res.status(200).send({ msg: r.body })
     });
 
   })
