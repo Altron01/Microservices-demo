@@ -12,7 +12,7 @@ frontapi:
       cpu: 100m
       memory: 100Mi
   image:
-    repository: harbor.ops.altronstudio.com/latest/frontapi
+    repository: harbor.hwcops.altronstudio.com/latest/demo/frontapi
 
 backapi:
   name: "backapi"
@@ -24,7 +24,7 @@ backapi:
       cpu: 100m
       memory: 100Mi
   image:
-    repository: harbor.ops.altronstudio.com/latest/backapi
+    repository: harbor.hwcops.altronstudio.com/latest/demo/backapi
 
 imagePullSecrets:
   name: harbor-registry
