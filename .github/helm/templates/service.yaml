@@ -8,7 +8,7 @@ spec:
     - targetPort: {{ .Values.frontapi.container.port }}
       port: {{ .Values.frontapi.container.port }}
   selector:
-      name: {{ .Values.frontapi.name }}-deploy
+      name: {{ .Values.frontapi.name }}
 
 ---
 
@@ -22,4 +22,4 @@ spec:
     - targetPort: {{ .Values.backapi.container.port }}
       port: {{ .Values.backapi.container.port }}
   selector:
-      name: {{ .Values.backapi.name }}-deploy
+      name: {{ .Values.backapi.name }}

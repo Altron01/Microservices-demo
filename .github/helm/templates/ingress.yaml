@@ -30,7 +30,7 @@ spec:
   tls:
     - hosts:
       - {{ .Values.frontapi.domain.host }}
-      secretName: {{ .Values.domain.sslSecret }}
+      secretName: {{ .Values.sslSecret }}
 
 ---
 
