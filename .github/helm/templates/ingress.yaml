@@ -65,5 +65,5 @@ spec:
   tls:
     - hosts:
       - {{ .Values.backapi.domain.host }}
-      secretName: {{ .Values.domain.sslSecret }}
+      secretName: {{ .Values.sslSecret }}
 {{- end -}}

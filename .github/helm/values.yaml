@@ -1,6 +1,6 @@
 global:
   image:
-    tag: "0.1.0"
+    tag: ""
 
 frontapi:
   name: "frontapi"

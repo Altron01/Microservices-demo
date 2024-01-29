@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
         msg: "Done"
       }
     }).then(res => {
-      res.status(200).send({ msg: req })
+      res.status(200).send({ msg: res.body })
     });
 
   })
